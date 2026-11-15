@@ -1,0 +1,53 @@
+[PASS] S1  Phi' = K' + tau + (h - psi) tau'
+[PASS] S2  Lemma 1(a): slope at a stable quote is (h - psi) tau'
+[PASS] S3  Lemma 1(c): Phi(h_s) = K(h_s) - (h_s - psi) K'(h_s)
+[PASS] S4  Theorem 2(a): S_b(b) = Phi(b) and S_b'(b) = Phi'(b)
+[PASS] S5  Theorem 2(b): T'(K'' + 2 tau') + (b - psi) tau'' = 0
+[PASS] S6  Theorem 2(b): T' = (b - psi) tau''/(gamma + 2 eps) = 1 - gamma_PO/(gamma + 2 eps)
+[PASS] S7  Theorem 2(c): slope of the retraining map is -eps/gamma
+[PASS] S8  quadratic K: step = b + Phi'(b)/(gamma + 2 eps)
+[PASS] S9  Theorem 3: coefficients of the joint rules (left and right)
+[PASS] S10 instance: K' and K'' formulas
+[PASS] S11 instance: min of exp(-x)(2 - x) is -exp(-3), so gamma >= 2w - A k exp(-3)
+[PASS] S12 instance: -Phi'' = gamma + 2 eps - (h - psi) tau''
+[PASS] S13 Theorem 5: 2 exp(-n r^2 / (2 sigma^2)) = delta
+[PASS] S14 Theorem 5: sum_{i<=n} 1/(i(i+1)) = 1 - 1/(n+1)
+[PASS] S15 Proposition 4: at n = 8 sigma^2 log(2/delta) m^2 / Delta^2 the margin 2 m r equals Delta
+[PASS] L1a Lemma 1(a): Phi'(h_s) = (h_s - psi) tau'(h_s) <= 0  (400 instances)
+[PASS] L1b Lemma 1(b): Phi(h) <= J(h; tau(h_s)) <= Phi(h_s) for h >= h_s  (400 instances, max Phi(h) - Phi(h_s) = 0.00e+00)
+[PASS] L1c Lemma 1(c): tau(h_s) = -K'(h_s), Phi(h_s) = K(h_s) - (h_s - psi) K'(h_s)
+[PASS] P1  Proposition 1: survival function of a nonincreasing density is in the shape class  (300 distributions)
+[PASS] P1' Proposition 1 is not vacuous: a unimodal density with interior mode fails convexity
+[PASS] L2  Lemma 2: S_b <= Phi on [psi, hbar], with equality at b  (900 pairs)
+[PASS] T1a Theorem 1: Phi(b+) - Phi(b) >= (gamma_min/2)(b+ - b)^2  (900 steps, smallest gain/bound ratio 1.000)
+[PASS] T1b Theorem 1: profit nondecreasing and sum of squared steps bounded  (300 trajectories)
+[PASS] T1c Theorem 1: the limit is stationary (or a boundary point with outward slope)  (289 interior limits of 300)
+[PASS] T2a Theorem 2(a): the limit of the iteration is a fixed point with Phi' = 0
+[PASS] T2b Theorem 2(b): T'(b) matches (b - psi) tau''/(gamma + 2 eps), in [0, 1) when gamma_PO > 0  (299 fixed points)
+[PASS] T2c Theorem 2(c): R'(h_s) = -eps/gamma; contraction if m < 1, repulsion if m > 1  (278 stable and 11 unstable cases)
+[PASS] P2a Proposition 2: Phi(h) - Phi(b) >= K(h) - K(b) - (b - h) U_b for psi <= h <= b
+[PASS] P2b Proposition 2: at a stable b the loss is at most (gamma_bar/2)(b - h)^2; d = sqrt(2 ell/gamma_bar) is safe
+[PASS] T3a Theorem 3: envelope (M), (Z), (CL), (CR) is a lower bound on tau  (1494 instances x 500 quotes)
+[PASS] T3b Theorem 3: certified gain <= true gain for every quote (code path used by the agent)  (min slack -2.29e-13)
+[PASS] T3c Theorem 3: each rule checked separately and against the code
+[PASS] T3d Theorem 3 (D): direct comparison is valid for arbitrary flow values  (2000 draws)
+[PASS] T3e Theorem 3 is not vacuous: the chord rule fails for a concave flow
+[PASS] P3  Proposition 3: with two exact anchors the envelope is attained by a member of the class in all three regions  (1500 draws x 3 regions)
+[PASS] T4  Theorem 4: under the constant flow tau(b) every other quote is strictly worse than a stable b  (400 instances)
+[PASS] T5a Theorem 5(i): the error budget alpha/(j(j+1)i(i+1)) sums to at most alpha
+[PASS] T5b checkpoint sample counts are deterministic: 16, 24, 36, 54, 81, 122, 183, 275, ...
+[PASS] T5c Theorem 5(i): simultaneous coverage, Gaussian noise  (failure frequency 0.0037 over 4000 replications, allowed 0.05)
+[PASS] T5c Theorem 5(i): simultaneous coverage, uniform noise  (failure frequency 0.0032 over 4000 replications, allowed 0.05)
+[PASS] T5d uniform noise is sub-Gaussian with variance proxy equal to its variance
+[PASS] T5e Theorem 5(ii): on the confidence event every adoption strictly improves true profit  (97 runs, event held throughout in 96)
+[PASS] T5f Theorem 5(ii): on the confidence event every deployed quote is within the budget of the incumbent and of the start
+[PASS] T5g the one harmful adoption of the main experiment (seed 125) follows a recorded coverage failure  (coverage failures: [('m=0.3', 0.05, 125, 16)])
+[PASS] P4  Proposition 4: certified gain >= true gain - 2(c - psi) r_c - 2(b - psi) r_b; sample-size threshold  (4000 draws)
+[PASS] I1  instance: stable quotes, optima and gaps match the values printed in the paper; assumptions hold
+[PASS] I2  instance: tangent-response iterates at m = 0.6  ([2.4065, 1.8554, 1.6045, 1.4694, 1.3941])
+[PASS] I3  instance: local rate of the tangent-response map at the optimum, m = 0.6  (0.5670)
+[PASS] I4  instance: blind retraining returns to the stable quote iff the modulus is below one  (m=0.3: 0.0e+00, m=0.6: 0.0e+00, m=0.8: 1.8e-15, m=1.09: 5.4e-01)
+[PASS] I5  code: tangent_response returns the maximizer of the surrogate
+
+50 of 50 checks passed
+exit code 0
