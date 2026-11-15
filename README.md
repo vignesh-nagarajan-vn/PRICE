@@ -11,6 +11,7 @@ Two papers on what it costs when models retrain on data their own predictions sh
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54">
   <img src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white">
   <img src="https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white">
+  <img src="https://img.shields.io/badge/lean_4-0F3D5C?style=for-the-badge">
 </p>
 
 </div>
@@ -23,37 +24,37 @@ Built by Shriraghav Ashok and Vignesh Nagarajan.
 
 | Paper | Prices the loop | Status | Read |
 | --- | --- | --- | --- |
-| **Herd Immunity and Learning Externalities in Markets of Shared Foundation Models** | Socially | Submitted to [ABCSS 2026](https://css-japan.com/abcss2026/) at IEEE BigData on Oct 11, 2026. Decision expected Nov 1 | [PDF](econml/ieee-abcss/submission/abcss2026-herd-immunity.pdf) · [folder](econml/) |
-| **A Certified Exploration Framework for Pricing Models That Shape Their Own Data** | Privately | IEEE draft complete. Targeting [LRLS](https://lrls.org/), deadline Oct 30, 2026 | [PDF](ml-or/price-ieee.pdf) · [folder](ml-or/) |
+| **Herd Immunity and Learning Externalities in Markets of Shared Foundation Models** | Socially | Accepted at [ABCSS 2026](https://css-japan.com/abcss2026/), a workshop at IEEE BigData 2026 | [PDF](herd-immunity/ieee-abcss/submission/abcss2026-herd-immunity.pdf) · [folder](herd-immunity/) |
+| **Certified Safe Improvement of Self-Confirming Dealer Quotes** | Privately | Being prepared for submission to [TMLR](https://jmlr.org/tmlr/) | [PDF](certified-improvement/certified-safe-improvement.pdf) · [folder](certified-improvement/) |
 
 ## Layout
 
 | Path | Holds |
 | --- | --- |
-| [`econml/`](econml/) | The herd-immunity paper, its proofs, certificates and experiment harness |
-| [`ml-or/`](ml-or/) | The certified-exploration paper, its derivations and the experiment pipeline |
-| [`archive/`](archive/) | Earlier submissions, the scrapped MATH-AI paper and the planning notes |
+| [`herd-immunity/`](herd-immunity/) | The herd-immunity paper, its proofs, certificates and experiment harness |
+| [`certified-improvement/`](certified-improvement/) | The dealer-quotes paper, its code and experiments, and the Lean 4 proofs |
+| [`archive/`](archive/) | Earlier drafts of both papers and the planning notes |
 
 Each paper folder has its own README with the results, the folder map and what is and is not verified.
 
 ## Run the checks
 
-Every closed form in both papers has a numerical check that fails loudly on disagreement. Both suites need only Python and NumPy.
+Every result in both papers has a check that fails loudly on disagreement.
 
 ```bash
-python ml-or/mlxor-derivations/verify/verify_all.py
+for f in herd-immunity/ml-contributions/certificates/verify_*.py; do python "$f" || break; done
 ```
 
 ```bash
-python ml-or/posk-pipeline/tests/test_posk.py
+cd certified-improvement/supplementary/code && python verification/verify_math.py
 ```
 
 ```bash
-for f in econml/ml-contributions/certificates/verify_*.py; do python "$f" || break; done
+cd certified-improvement/supplementary/lean && lake exe cache get && lake build PriceCert
 ```
 
-The first runs 38 derivation checks, the second 9 unit tests, and the third 542 assertions across eight certificate files.
+The first runs 542 assertions across eight certificate files and needs only NumPy. The second runs the 50 theorem checks of the dealer-quotes paper and also needs SymPy and mpmath. The third builds the 107 Lean 4 theorems behind that paper.
 
 ## Archive
 
-Both papers were first submitted to NeurIPS 2026 workshops and rejected, and a third reframing for MATH-AI was scrapped. That material is kept under [`archive/`](archive/) with its own [README](archive/README.md). Nothing there is maintained.
+Earlier drafts of both papers and the planning notes that led to them are kept under [`archive/`](archive/) with their own [README](archive/README.md). Nothing there is maintained.
