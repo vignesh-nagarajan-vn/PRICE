@@ -1,11 +1,14 @@
 __pycache__/
 *.pyc
 
-# math-ai build noise
-archive/math-ai/paper/*.aux
-archive/math-ai/paper/*.log
-archive/math-ai/paper/*.out
-archive/math-ai/paper/*.fls
-archive/math-ai/paper/*.fdb_latexmk
-archive/math-ai/paper/*.blg
-archive/math-ai/**/__pycache__/
+# archived short-version build noise
+archive/certified-exploration-short/paper/*.aux
+archive/certified-exploration-short/paper/*.log
+archive/certified-exploration-short/paper/*.out
+archive/certified-exploration-short/paper/*.fls
+archive/certified-exploration-short/paper/*.fdb_latexmk
+archive/certified-exploration-short/paper/*.blg
+archive/certified-exploration-short/**/__pycache__/
+
+# Lean build output
+.lake/
