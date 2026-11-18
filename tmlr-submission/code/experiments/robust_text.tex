@@ -1,0 +1,55 @@
+Table~\ref{tab:robust} in Appendix~\ref{app:exp} varies one choice at a time, with 30 seeds for the certified search
+and 20 for the baselines.
+
+\paragraph{Budget.} A smaller budget share makes pilots shallower and certificates slower. With the monotone class
+the final rate reached \num{rob:budget05:certM:final} of the optimum with $\lrel=0.05$ and
+\num{rob:budget20:certM:final} with $\lrel=0.2$, against \num{main:certM:final} with $\lrel=0.1$. No pilot exceeded
+its budget in either variant. With $\lrel=0.2$, \num{rob:budget20:harmall} adoptions lowered profit, one for each
+class in the same market and seed, after the same interval had missed.
+
+\paragraph{Confidence intervals.} With Hoeffding intervals instead of relative-entropy intervals, the monotone class
+reached \num{rob:hoeffding:certM:final} of the optimum. The loss is concentrated in the markets with two or three
+competing quotes, where take-up is low and Hoeffding intervals are several times wider; with one competing quote
+the two kinds of interval give almost the same result.
+
+\paragraph{History.} With 50{,}000 quotes of history at $b_0$ before the first pilot, the monotone class reached
+\num{rob:hist:certM:final} of the optimum. History narrows the incumbent's interval and so allows deeper first
+pilots, but it does not remove the need for pilots (Theorem~\ref{thm:nocert}).
+
+\paragraph{A wrong slope bound.} With a slope bound half the true maximum slope, the class $\Meta$ no longer contains
+the take-up curve: \num{rob:etahalf:certeta:pilotover} pilots exceeded their budget, in
+\num{rob:etahalf:certeta:runsover} of runs, and \num{rob:etahalf:certeta:over} of quotes were over budget. The
+overruns can be large: the worst pilot lost \num{rob:etahalf:certeta:pilotlossmax} of the incumbent's profit per
+quote, and under the convex class of the main setting the worst lost \num{main:certC:pilotlossmax}. No adoption
+lowered profit (\num{rob:etahalf:certeta:harm} harmful adoptions): a wrong class can make pilots much costlier than
+budgeted, but adoptions do not use it (Theorem~\ref{thm:anytime}(i)).
+
+\paragraph{The own-data prior.} The failure of the sampler that starts from the own-data model comes from the
+precision of its prior, not from its starting point alone. With prior standard deviations ten times larger its
+final rate reached \num{rob:tsown10:tsown:final} of the optimum and its average profit
+\num{rob:tsown10:tsown:avg}, and with a hundred times larger \num{rob:tsown100:tsown:final} and
+\num{rob:tsown100:tsown:avg}, against \num{main:tsown:final} and \num{main:tsown:avg} in the main setting. The main
+setting gives the slope the standard error that the lender's files report. That standard error is small because the
+files hold many applications, but all of them come after the borrower chose the lender, so the precision is about
+the wrong quantity. Nor is the failure due to the level of the prior, which is the take-up of approved offers
+(about 97\%) and far above take-up at the quote stage: with the level set to the true take-up at $b_0$ and the
+same flat slope, the final rate reached \num{rob:tsownlevel:tsown:final} of the optimum. The sampler raises its
+rate, its quotes then sit in a narrow range of high rates where the data say little about the slope, and
+500{,}000 quotes do not overturn a prior that tight.
+
+\paragraph{Arms scaled to the market.} The baselines' arms cover three quarters of a point on each side of $b_0$
+whatever the margin, so in the markets with thin margins most arms are far from the optimum. With arms at
+multiples of one eighth of the optimal margin, from one eighth to three times the margin, which uses knowledge a
+lender does not have, KL-UCB earned \num{rob:armsmargin:klucb:avgone} of the optimum on average and Thompson
+sampling with a vague prior \num{rob:armsmargin:ts:avgone}; \num{rob:armsmargin:klucb:anyover} and
+\num{rob:armsmargin:ts:anyover} of their runs still contained a quote over budget
+(\num{rob:armsmargin:klucb:over} and \num{rob:armsmargin:ts:over} of quotes).
+
+\paragraph{Design parameters of the search.} The pilot cap, the checkpoint schedule, the rate increment and the
+error level were set once, after preliminary runs on a single market. Varying each one
+(Table~\ref{tab:design}, \num{rob:design:variants} variants, \num{rob:design:runs} runs) moves the final profit
+of the monotone class between \num{rob:design:certM:lo} and \num{rob:design:certM:hi} of the optimum and that of
+the slope-bound class between \num{rob:design:certeta:lo} and \num{rob:design:certeta:hi}. The guarantees do not
+depend on these parameters: across all variants \num{rob:design:pilotover} pilots exceeded their budget (exact 95\%
+upper limit \num{rob:design:pilotover:cp:hi} per seed, from \num{rob:design:seeds} seeds), and
+\num{rob:design:harm} adoptions lowered profit, each in a run where an interval had missed.
