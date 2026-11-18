@@ -1,0 +1,5 @@
+class M  : 15000 (instance, rate) pairs from 600 instances (0 infeasible skipped); largest excess of the closed form over the LP optimum 6.66e-16 -> PASS; closed form equals the LP optimum in 86.3% of pairs; gap median 0.0000, 90th percentile 0.0230
+class eta: 15000 (instance, rate) pairs from 600 instances (0 infeasible skipped); largest excess of the closed form over the LP optimum 5.00e-16 -> PASS; closed form equals the LP optimum in 72.8% of pairs; gap median 0.0000, 90th percentile 0.0437
+class C  : 15000 (instance, rate) pairs from 600 instances (0 infeasible skipped); largest excess of the closed form over the LP optimum 2.05e-15 -> PASS; closed form equals the LP optimum in 53.8% of pairs; gap median 0.0000, 90th percentile 0.1804
+closed-form certificates valid in every pair
+lp_check exit 0

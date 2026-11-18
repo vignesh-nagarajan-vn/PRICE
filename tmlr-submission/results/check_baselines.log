@@ -1,0 +1,5 @@
+PASS  KL-UCB bound equals the upper end of the certified search's interval     (max difference 8.8e-13, 2000 cases)
+PASS  Thompson sampling: damped Newton converges on every problem              (2000 of 2000)
+PASS  Thompson sampling: returned point is the mode (next step < 1e-5 posterior sd) (largest 9.9e-07)
+INFO  undamped Newton steps fail on 785 of 2000 of the same problems
+3 of 3 checks passed

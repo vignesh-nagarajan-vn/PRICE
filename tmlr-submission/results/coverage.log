@@ -1,0 +1,11 @@
+alpha = 0.05, n0 = 64, rho = 1.5, rates cycle through (0.5, 0.2, 0.05, 0.01), budget T = 20000 samples, 4000 replications per cell
+relative entropy (paper)   chase-low      failure rate 0.0010  95% CI [0.0003, 0.0026]  PASS
+relative entropy (paper)   many-anchors   failure rate 0.0022  95% CI [0.0010, 0.0043]  PASS
+relative entropy (paper)   chase-extreme  failure rate 0.0032  95% CI [0.0017, 0.0056]  PASS
+Hoeffding (paper)          chase-low      failure rate 0.0003  95% CI [0.0000, 0.0014]  PASS
+Hoeffding (paper)          many-anchors   failure rate 0.0015  95% CI [0.0006, 0.0033]  PASS
+Hoeffding (paper)          chase-extreme  failure rate 0.0030  95% CI [0.0016, 0.0052]  PASS
+no schedule (control)      chase-low      failure rate 0.4425  95% CI [0.4270, 0.4581]  
+no schedule (control)      many-anchors   failure rate 0.8067  95% CI [0.7942, 0.8189]  
+no schedule (control)      chase-extreme  failure rate 0.8682  95% CI [0.8574, 0.8786]  
+all certified cells below alpha with 95% confidence; kl_interval contained p whenever the event held
