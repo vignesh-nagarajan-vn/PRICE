@@ -25,15 +25,15 @@ Built by Shriraghav Ashok and Vignesh Nagarajan.
 | Paper | Prices the loop | Status | Read |
 | --- | --- | --- | --- |
 | **Herd Immunity and Learning Externalities in Markets of Shared Foundation Models** | Socially | Accepted at [ABCSS 2026](https://css-japan.com/abcss2026/), a workshop at IEEE BigData 2026 | [PDF](herd-immunity/ieee-abcss/submission/abcss2026-herd-immunity.pdf) · [folder](herd-immunity/) |
-| **Certified Safe Improvement of Self-Confirming Dealer Quotes** | Privately | Being prepared for submission to [TMLR](https://jmlr.org/tmlr/) | [PDF](certified-improvement/certified-safe-improvement.pdf) · [folder](certified-improvement/) |
+| **Certified Rate Changes for Lenders That Learn from Their Own Loans** | Privately | Submitted to [TMLR](https://jmlr.org/tmlr/) on November 19, 2026, under review ([OpenReview](https://openreview.net/forum?id=7KhnbCrUhb)) | [PDF](tmlr-submission/certified-rate-changes-tmlr.pdf) · [folder](tmlr-submission/) |
 
 ## Layout
 
 | Path | Holds |
 | --- | --- |
 | [`herd-immunity/`](herd-immunity/) | The herd-immunity paper, its proofs, certificates and experiment harness |
-| [`certified-improvement/`](certified-improvement/) | The dealer-quotes paper, its code and experiments, and the Lean 4 proofs |
-| [`archive/`](archive/) | Earlier drafts of both papers and the planning notes |
+| [`tmlr-submission/`](tmlr-submission/) | The lending paper as submitted to TMLR, its HMDA analyses, code, results and Lean 4 proofs, and the uploaded supplement |
+| [`archive/`](archive/) | Earlier drafts of both papers, including the dealer-quotes paper the lending paper replaced, and the planning notes |
 
 Each paper folder has its own README with the results, the folder map and what is and is not verified.
 
@@ -46,14 +46,14 @@ for f in herd-immunity/ml-contributions/certificates/verify_*.py; do python "$f"
 ```
 
 ```bash
-cd certified-improvement/supplementary/code && python verification/verify_math.py
+cd tmlr-submission/code && python verification/verify_math.py
 ```
 
 ```bash
-cd certified-improvement/supplementary/lean && lake exe cache get && lake build PriceCert
+cd tmlr-submission/lean && lake exe cache get && lake build CreditCert
 ```
 
-The first runs 542 assertions across eight certificate files and needs only NumPy. The second runs the 50 theorem checks of the dealer-quotes paper and also needs SymPy and mpmath. The third builds the 107 Lean 4 theorems behind that paper.
+The first runs 542 assertions across eight certificate files and needs only NumPy. The second runs the 32 numerical checks of the lending paper. The third builds the 123 Lean 4 theorems behind that paper.
 
 ## Archive
 

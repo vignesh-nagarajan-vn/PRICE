@@ -1,0 +1,78 @@
+CA_2022: 139165 loans in cells with 2+ lenders; 285 lenders with >= 30 loans (136571 loans); markup sd 0.403 pp, p10/50/90 -0.414/+0.020/+0.282; bandwidth 0.134; loan-level sd 0.744
+   K=1: psi -0.362, s* +0.020 (median is global opt: True), a(s*) 0.471, Phi* 0.1798; sign changes {'lender': 11, 'lender_2bw': 3, 'loan': 1}; slope at median -1.235 (-1.807 to -1.077) per pp
+      convex near own markup [lender]: d=0.0: 0.41 (0.35-0.61); d=0.125: 0.14 (0.04-0.46); d=0.25: 0.02 (0.00-0.32)
+      convex near own markup [lender_2bw]: d=0.0: 0.53 (0.37-0.55); d=0.125: 0.35 (0.13-0.40); d=0.25: 0.12 (0.03-0.26)
+      convex near own markup [loan]: d=0.0: 0.52 (0.34-0.76); d=0.125: 0.35 (0.22-0.54); d=0.25: 0.11 (0.06-0.20)
+   K=2: psi -0.171, s* +0.020 (median is global opt: True), a(s*) 0.221, Phi* 0.0424; sign changes {'lender': 5, 'lender_2bw': 3, 'loan': 1}; slope at median -1.165 (-2.215 to -1.030) per pp
+      convex near own markup [lender]: d=0.0: 0.68 (0.58-0.91); d=0.125: 0.54 (0.28-0.60); d=0.25: 0.41 (0.04-0.49)
+      convex near own markup [lender_2bw]: d=0.0: 0.83 (0.63-0.92); d=0.125: 0.54 (0.39-0.65); d=0.25: 0.42 (0.27-0.49)
+      convex near own markup [loan]: d=0.0: 0.86 (0.75-0.93); d=0.125: 0.55 (0.37-0.80); d=0.25: 0.52 (0.34-0.76)
+   K=3: psi -0.107, s* +0.020 (median is global opt: True), a(s*) 0.104, Phi* 0.0133; sign changes {'lender': 3, 'lender_2bw': 3, 'loan': 1}; slope at median -0.823 (-2.129 to -0.724) per pp
+      convex near own markup [lender]: d=0.0: 0.85 (0.69-0.93); d=0.125: 0.55 (0.37-0.73); d=0.25: 0.43 (0.09-0.56)
+      convex near own markup [lender_2bw]: d=0.0: 0.87 (0.76-0.94); d=0.125: 0.66 (0.57-0.90); d=0.25: 0.54 (0.37-0.65)
+      convex near own markup [loan]: d=0.0: 0.89 (0.80-0.95); d=0.125: 0.86 (0.76-0.93); d=0.25: 0.65 (0.43-0.85)
+CA_2023: 94711 loans in cells with 2+ lenders; 225 lenders with >= 30 loans (92220 loans); markup sd 0.468 pp, p10/50/90 -0.496/-0.019/+0.276; bandwidth 0.095; loan-level sd 0.833
+   K=1: psi -0.296, s* -0.020 (median is global opt: True), a(s*) 0.542, Phi* 0.1496; sign changes {'lender': 15, 'lender_2bw': 7, 'loan': 1}; slope at median -1.950 (-2.736 to -1.085) per pp
+      convex near own markup [lender]: d=0.0: 0.46 (0.32-0.66); d=0.125: 0.25 (0.06-0.33); d=0.25: 0.09 (0.00-0.17)
+      convex near own markup [lender_2bw]: d=0.0: 0.41 (0.28-0.57); d=0.125: 0.25 (0.14-0.32); d=0.25: 0.12 (0.04-0.16)
+      convex near own markup [loan]: d=0.0: 0.62 (0.42-0.82); d=0.125: 0.30 (0.17-0.49); d=0.25: 0.16 (0.08-0.28)
+   K=2: psi -0.157, s* -0.020 (median is global opt: True), a(s*) 0.294, Phi* 0.0404; sign changes {'lender': 9, 'lender_2bw': 5, 'loan': 1}; slope at median -2.107 (-2.972 to -1.062) per pp
+      convex near own markup [lender]: d=0.0: 0.79 (0.60-0.88); d=0.125: 0.31 (0.18-0.48); d=0.25: 0.19 (0.04-0.31)
+      convex near own markup [lender_2bw]: d=0.0: 0.79 (0.64-0.88); d=0.125: 0.39 (0.24-0.56); d=0.25: 0.27 (0.13-0.36)
+      convex near own markup [loan]: d=0.0: 0.87 (0.75-0.95); d=0.125: 0.80 (0.63-0.90); d=0.25: 0.74 (0.56-0.86)
+   K=3: psi -0.111, s* -0.020 (median is global opt: True), a(s*) 0.159, Phi* 0.0145; sign changes {'lender': 9, 'lender_2bw': 5, 'loan': 1}; slope at median -1.707 (-2.587 to -0.774) per pp
+      convex near own markup [lender]: d=0.0: 0.79 (0.71-0.91); d=0.125: 0.34 (0.22-0.65); d=0.25: 0.22 (0.10-0.45)
+      convex near own markup [lender_2bw]: d=0.0: 0.81 (0.71-0.90); d=0.125: 0.63 (0.41-0.81); d=0.25: 0.31 (0.18-0.49)
+      convex near own markup [loan]: d=0.0: 0.90 (0.79-0.96); d=0.125: 0.87 (0.76-0.95); d=0.25: 0.85 (0.72-0.93)
+FL_2022: 138216 loans in cells with 2+ lenders; 323 lenders with >= 30 loans (133814 loans); markup sd 0.374 pp, p10/50/90 -0.385/+0.003/+0.284; bandwidth 0.128; loan-level sd 0.755
+   K=1: psi -0.372, s* +0.003 (median is global opt: True), a(s*) 0.476, Phi* 0.1787; sign changes {'lender': 8, 'lender_2bw': 3, 'loan': 1}; slope at median -1.265 (-1.671 to -1.103) per pp
+      convex near own markup [lender]: d=0.0: 0.37 (0.33-0.60); d=0.125: 0.22 (0.06-0.49); d=0.25: 0.05 (0.00-0.32)
+      convex near own markup [lender_2bw]: d=0.0: 0.51 (0.42-0.55); d=0.125: 0.30 (0.18-0.37); d=0.25: 0.11 (0.04-0.24)
+      convex near own markup [loan]: d=0.0: 0.54 (0.39-0.71); d=0.125: 0.33 (0.22-0.46); d=0.25: 0.13 (0.07-0.21)
+   K=2: psi -0.185, s* +0.003 (median is global opt: True), a(s*) 0.227, Phi* 0.0425; sign changes {'lender': 6, 'lender_2bw': 3, 'loan': 1}; slope at median -1.203 (-1.967 to -1.058) per pp
+      convex near own markup [lender]: d=0.0: 0.67 (0.59-0.90); d=0.125: 0.55 (0.33-0.60); d=0.25: 0.40 (0.09-0.47)
+      convex near own markup [lender_2bw]: d=0.0: 0.67 (0.65-0.90); d=0.125: 0.56 (0.47-0.64); d=0.25: 0.41 (0.29-0.47)
+      convex near own markup [loan]: d=0.0: 0.87 (0.76-0.94); d=0.125: 0.64 (0.47-0.82); d=0.25: 0.54 (0.39-0.71)
+   K=3: psi -0.122, s* +0.003 (median is global opt: True), a(s*) 0.108, Phi* 0.0135; sign changes {'lender': 6, 'lender_2bw': 3, 'loan': 1}; slope at median -0.858 (-1.866 to -0.733) per pp
+      convex near own markup [lender]: d=0.0: 0.85 (0.71-0.93); d=0.125: 0.58 (0.44-0.67); d=0.25: 0.46 (0.24-0.56)
+      convex near own markup [lender_2bw]: d=0.0: 0.87 (0.79-0.94); d=0.125: 0.65 (0.57-0.85); d=0.25: 0.55 (0.42-0.63)
+      convex near own markup [loan]: d=0.0: 0.90 (0.80-0.97); d=0.125: 0.87 (0.77-0.94); d=0.25: 0.65 (0.49-0.83)
+FL_2023: 107431 loans in cells with 2+ lenders; 268 lenders with >= 30 loans (103459 loans); markup sd 0.470 pp, p10/50/90 -0.591/+0.008/+0.290; bandwidth 0.127; loan-level sd 0.870
+   K=1: psi -0.334, s* +0.007 (median is global opt: True), a(s*) 0.508, Phi* 0.1735; sign changes {'lender': 9, 'lender_2bw': 3, 'loan': 1}; slope at median -1.482 (-1.959 to -0.921) per pp
+      convex near own markup [lender]: d=0.0: 0.45 (0.31-0.55); d=0.125: 0.22 (0.08-0.28); d=0.25: 0.06 (0.01-0.11)
+      convex near own markup [lender_2bw]: d=0.0: 0.40 (0.30-0.54); d=0.125: 0.22 (0.13-0.29); d=0.25: 0.07 (0.03-0.12)
+      convex near own markup [loan]: d=0.0: 0.62 (0.45-0.77); d=0.125: 0.29 (0.19-0.43); d=0.25: 0.13 (0.08-0.21)
+   K=2: psi -0.163, s* +0.007 (median is global opt: True), a(s*) 0.258, Phi* 0.0440; sign changes {'lender': 7, 'lender_2bw': 3, 'loan': 1}; slope at median -1.503 (-2.098 to -0.897) per pp
+      convex near own markup [lender]: d=0.0: 0.68 (0.55-0.82); d=0.125: 0.32 (0.23-0.47); d=0.25: 0.18 (0.06-0.29)
+      convex near own markup [lender_2bw]: d=0.0: 0.71 (0.61-0.83); d=0.125: 0.60 (0.35-0.68); d=0.25: 0.26 (0.17-0.42)
+      convex near own markup [loan]: d=0.0: 0.83 (0.68-0.93); d=0.125: 0.74 (0.59-0.87); d=0.25: 0.71 (0.55-0.83)
+   K=3: psi -0.106, s* +0.007 (median is global opt: True), a(s*) 0.131, Phi* 0.0149; sign changes {'lender': 7, 'lender_2bw': 3, 'loan': 1}; slope at median -1.143 (-1.765 to -0.616) per pp
+      convex near own markup [lender]: d=0.0: 0.75 (0.67-0.89); d=0.125: 0.40 (0.29-0.65); d=0.25: 0.22 (0.11-0.55)
+      convex near own markup [lender_2bw]: d=0.0: 0.76 (0.70-0.90); d=0.125: 0.71 (0.61-0.81); d=0.25: 0.41 (0.29-0.72)
+      convex near own markup [loan]: d=0.0: 0.87 (0.74-0.97); d=0.125: 0.86 (0.72-0.95); d=0.25: 0.81 (0.65-0.91)
+TX_2022: 154658 loans in cells with 2+ lenders; 351 lenders with >= 30 loans (151590 loans); markup sd 0.353 pp, p10/50/90 -0.401/+0.018/+0.305; bandwidth 0.109; loan-level sd 0.745
+   K=1: psi -0.380, s* +0.018 (median is global opt: True), a(s*) 0.493, Phi* 0.1961; sign changes {'lender': 6, 'lender_2bw': 3, 'loan': 1}; slope at median -1.238 (-1.768 to -0.987) per pp
+      convex near own markup [lender]: d=0.0: 0.33 (0.30-0.58); d=0.125: 0.14 (0.08-0.42); d=0.25: 0.02 (0.01-0.28)
+      convex near own markup [lender_2bw]: d=0.0: 0.47 (0.41-0.53); d=0.125: 0.24 (0.16-0.38); d=0.25: 0.10 (0.02-0.20)
+      convex near own markup [loan]: d=0.0: 0.52 (0.40-0.64); d=0.125: 0.34 (0.25-0.44); d=0.25: 0.15 (0.09-0.22)
+   K=2: psi -0.181, s* +0.018 (median is global opt: True), a(s*) 0.243, Phi* 0.0483; sign changes {'lender': 6, 'lender_2bw': 3, 'loan': 1}; slope at median -1.220 (-1.652 to -0.976) per pp
+      convex near own markup [lender]: d=0.0: 0.72 (0.55-0.84); d=0.125: 0.57 (0.22-0.63); d=0.25: 0.44 (0.07-0.50)
+      convex near own markup [lender_2bw]: d=0.0: 0.67 (0.63-0.82); d=0.125: 0.56 (0.49-0.65); d=0.25: 0.44 (0.23-0.51)
+      convex near own markup [loan]: d=0.0: 0.81 (0.70-0.91); d=0.125: 0.64 (0.52-0.77); d=0.25: 0.53 (0.41-0.66)
+   K=3: psi -0.115, s* +0.018 (median is global opt: True), a(s*) 0.120, Phi* 0.0159; sign changes {'lender': 6, 'lender_2bw': 3, 'loan': 1}; slope at median -0.902 (-1.253 to -0.715) per pp
+      convex near own markup [lender]: d=0.0: 0.79 (0.70-0.91); d=0.125: 0.61 (0.44-0.77); d=0.25: 0.47 (0.16-0.69)
+      convex near own markup [lender_2bw]: d=0.0: 0.83 (0.76-0.90); d=0.125: 0.66 (0.60-0.77); d=0.25: 0.54 (0.46-0.71)
+      convex near own markup [loan]: d=0.0: 0.90 (0.79-0.98); d=0.125: 0.84 (0.73-0.93); d=0.25: 0.67 (0.54-0.80)
+TX_2023: 118728 loans in cells with 2+ lenders; 289 lenders with >= 30 loans (115280 loans); markup sd 0.488 pp, p10/50/90 -0.627/+0.032/+0.344; bandwidth 0.121; loan-level sd 0.854
+   K=1: psi -0.350, s* +0.032 (median is global opt: True), a(s*) 0.520, Phi* 0.1987; sign changes {'lender': 9, 'lender_2bw': 3, 'loan': 1}; slope at median -1.362 (-1.763 to -0.927) per pp
+      convex near own markup [lender]: d=0.0: 0.43 (0.31-0.56); d=0.125: 0.30 (0.08-0.36); d=0.25: 0.11 (0.02-0.21)
+      convex near own markup [lender_2bw]: d=0.0: 0.40 (0.32-0.49); d=0.125: 0.27 (0.18-0.32); d=0.25: 0.09 (0.05-0.16)
+      convex near own markup [loan]: d=0.0: 0.44 (0.32-0.58); d=0.125: 0.33 (0.24-0.46); d=0.25: 0.16 (0.10-0.23)
+   K=2: psi -0.159, s* +0.032 (median is global opt: True), a(s*) 0.270, Phi* 0.0517; sign changes {'lender': 9, 'lender_2bw': 3, 'loan': 1}; slope at median -1.417 (-1.952 to -0.906) per pp
+      convex near own markup [lender]: d=0.0: 0.65 (0.56-0.82); d=0.125: 0.39 (0.28-0.50); d=0.25: 0.23 (0.11-0.37)
+      convex near own markup [lender_2bw]: d=0.0: 0.72 (0.60-0.84); d=0.125: 0.43 (0.35-0.60); d=0.25: 0.33 (0.24-0.41)
+      convex near own markup [loan]: d=0.0: 0.83 (0.70-0.93); d=0.125: 0.75 (0.61-0.86); d=0.25: 0.68 (0.54-0.80)
+   K=3: psi -0.095, s* +0.032 (median is global opt: True), a(s*) 0.140, Phi* 0.0179; sign changes {'lender': 7, 'lender_2bw': 3, 'loan': 1}; slope at median -1.106 (-1.653 to -0.657) per pp
+      convex near own markup [lender]: d=0.0: 0.72 (0.70-0.89); d=0.125: 0.43 (0.32-0.67); d=0.25: 0.32 (0.21-0.56)
+      convex near own markup [lender_2bw]: d=0.0: 0.76 (0.68-0.89); d=0.125: 0.68 (0.57-0.77); d=0.25: 0.42 (0.31-0.57)
+      convex near own markup [loan]: d=0.0: 0.87 (0.74-0.97); d=0.125: 0.83 (0.71-0.93); d=0.25: 0.78 (0.64-0.90)

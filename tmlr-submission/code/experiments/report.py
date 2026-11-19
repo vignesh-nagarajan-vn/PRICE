@@ -46,6 +46,40 @@ def pct(x, d=1):
     return f"{100 * x:.{d}f}"
 
 
+FELL_BACK = []      # text numbers that kept one decimal because the integer would contradict a table
+
+
+def pct0(x):
+    """A percentage for the text.  The tables print one decimal.  The integer is used only when a reader who
+    rounds the table entry gets the same integer; otherwise the one-decimal figure of the table is quoted
+    (for example 91.46 prints as 91.5 in a table, and "91%" in the text would look like a mistake)."""
+    one, zero = f"{100 * x:.1f}", f"{100 * x:.0f}"
+    if str(int(math.floor(float(one) + 0.5))) == zero:
+        return zero
+    FELL_BACK.append(one)
+    return one
+
+
+def label_once(rows):
+    """Blank the first cell of a row when the row above has the same first cell, and add a little space between
+    groups, so that a variant's label is printed once."""
+    out, prev = [], None
+    for r in rows:
+        if " & " not in r:                 # a rule
+            out.append(r)
+            prev = None
+            continue
+        label, rest = r.split(" & ", 1)
+        if label == prev:
+            out.append(" & " + rest)
+        else:
+            if prev is not None:
+                out.append(r"\addlinespace[2pt]")
+            out.append(r)
+        prev = label
+    return out
+
+
 def load_runs(path):
     if path.endswith(".jsonl"):
         return [json.loads(l) for l in open(path)]
@@ -224,17 +258,23 @@ def offers_section(out):
 
 def sample_section(out):
     rows = []
+    # Number of downloaded records per file.  Counted from the raw files when they are present and saved in
+    # data/derived/raw_counts.json, so that the table can be rebuilt without the raw files.
+    counts_path = os.path.join(DER, "raw_counts.json")
+    counts = json.load(open(counts_path)) if os.path.exists(counts_path) else {}
     for t in TAGS:
         tk = json.load(open(os.path.join(DER, f"takeup_{t}.json")))
         of = json.load(open(os.path.join(DER, f"offers_{t}.json")))
         raw = os.path.join(PROJ, "data", "raw", f"hmda_{t}_purchase.csv")
-        n_raw = None
         if os.path.exists(raw):
             with open(raw, "rb") as fh:
-                n_raw = sum(chunk.count(b"\n") for chunk in iter(lambda: fh.read(1 << 24), b"")) - 1
+                counts[t] = sum(chunk.count(b"\n") for chunk in iter(lambda: fh.read(1 << 24), b"")) - 1
+        n_raw = counts.get(t)
         rows.append(f"{TAGNAME[t]} & {fmt_int(n_raw) if n_raw is not None else '--'} & {fmt_int(tk['n'])} & "
                     f"{fmt_int(tk['n_within'])} & {fmt_int(tk['cells'])} & {fmt_int(of['n_rel'])} & {fmt_int(of['lenders'])} & "
                     f"{fmt_int(of['loans_in_kept_lenders'])} & {of['bandwidth']:.3f} \\\\")
+    if counts:
+        json.dump(counts, open(counts_path, "w"), indent=1, sort_keys=True)
     tab = [r"\begin{tabular}{lrrrrrrrr}", r"\toprule",
            r" & Downloaded & \multicolumn{3}{c}{Take-up analysis} & \multicolumn{4}{c}{Competing-offers analysis} \\",
            r"\cmidrule(lr){3-5}\cmidrule(lr){6-9}",
@@ -342,9 +382,10 @@ def main_section(out, runs):
         if not rs:
             continue
         k = m.replace("-", "")
-        put(f"main:{k}:final", pct(np.mean([r["final_of_opt"] for r in rs]), 0) + r"\%")
+        put(f"main:{k}:final", pct0(np.mean([r["final_of_opt"] for r in rs])) + r"\%")
         put(f"main:{k}:finalone", pct(np.mean([r["final_of_opt"] for r in rs]), 1) + r"\%")
-        put(f"main:{k}:avg", pct(np.mean([r["avg_of_opt"] for r in rs]), 0) + r"\%")
+        put(f"main:{k}:avg", pct0(np.mean([r["avg_of_opt"] for r in rs])) + r"\%")
+        put(f"main:{k}:avgone", pct(np.mean([r["avg_of_opt"] for r in rs]), 1) + r"\%")
         put(f"main:{k}:over", pct(np.mean([r["over_budget"] for r in rs]), 1) + r"\%")
         put(f"main:{k}:above", pct(np.mean([r["above_start"] for r in rs]), 0) + r"\%")
         if m.startswith("cert"):
@@ -362,6 +403,16 @@ def main_section(out, runs):
     put("main:certMeta:pilotover", fmt_int(sum(r["pilot_over_budget"] for m in ("cert-M", "cert-eta") for r in by[m])))
     put("main:certMeta:runs", fmt_int(len(by["cert-M"]) + len(by["cert-eta"])))
     put("main:certC:runsover", pct(np.mean([r["pilot_over_budget"] > 0 for r in by["cert-C"]]), 1) + r"\%")
+    anyc = np.mean([r["over_budget"] > 0 for r in by["cert-C"]])                 # as printed in the main table
+    put("main:certC:anyfloor", pct(anyc, 2 if 0 < anyc < 0.001 else 1 if 0 < anyc < 0.01 else 0) + r"\%")
+    nfloor = sum(r["over_budget"] > 0 for r in by["cert-C"])
+    npil = sum(r["pilot_over_budget"] > 0 for r in by["cert-C"])
+    assert nfloor < npil / 2, "text says most convex-class runs with a pilot over budget stayed above the fixed floor"
+    assert all(r["pilot_over_budget"] > 0 for r in by["cert-C"] if r["over_budget"] > 0), "a floor breach without a pilot over budget"
+    put("main:certC:pilotruns", fmt_int(npil))
+    put("main:certC:floorruns", fmt_int(nfloor))
+    put("main:certC:pilotlossmedian", pct(float(np.median([r["pilot_loss_max_rel"] for r in by["cert-C"]
+                                                           if r["pilot_over_budget"] > 0])), 1) + r"\%")
     # facts stated in prose: fail loudly if a rerun changes them
     assert sum(r["harmful_moves"] for r in cert) == 1, "text says exactly one harmful adoption"
     assert sum(r["pilot_over_budget"] for m in ("cert-M", "cert-eta") for r in by[m]) == 0, "text says no pilot over budget"
@@ -475,8 +526,6 @@ def main_section(out, runs):
             for K in (1, 2, 3):
                 put(f"{k}:K{K}", str(sum(1 for w in won if w[1] == K)))
     # facts stated in prose about the ranking of average profit: fail loudly if a rerun changes them
-    if "main:klucb:final" in NUM and "main:ts:final" in NUM:
-        assert NUM["main:klucb:final"] == NUM["main:ts:final"], "abstract gives one figure for KL-UCB and Thompson (vague)"
     for c in ("certM", "certeta"):
         for b in ("klucb", "ts"):
             if f"mk:{c}:{b}" in NUM:
@@ -617,8 +666,9 @@ def robust_section(out, main_runs):
             if m.startswith("ts"):
                 assert all(r.get("ts_not_converged", 1) == 0 for r in rs), f"{key}: a Thompson update did not converge"
             k = f"rob:{key}:{m.replace('-', '')}"
-            put(k + ":final", pct(np.mean([r["final_of_opt"] for r in rs]), 0) + r"\%")
-            put(k + ":avg", pct(np.mean([r["avg_of_opt"] for r in rs]), 0) + r"\%")
+            put(k + ":final", pct0(np.mean([r["final_of_opt"] for r in rs])) + r"\%")
+            put(k + ":finalone", pct(np.mean([r["final_of_opt"] for r in rs]), 1) + r"\%")
+            put(k + ":avg", pct0(np.mean([r["avg_of_opt"] for r in rs])) + r"\%")
             put(k + ":avgone", pct(np.mean([r["avg_of_opt"] for r in rs]), 1) + r"\%")
             put(k + ":over", pct(np.mean([r["over_budget"] for r in rs]), 1) + r"\%")
             put(k + ":anyover", pct(np.mean([r["over_budget"] > 0 for r in rs]), 0) + r"\%")
@@ -639,9 +689,10 @@ def robust_section(out, main_runs):
         assert g("rob:tsown10:tsown:final") > 90 and g("rob:tsown100:tsown:final") > 90, "text: a wider prior recovers"
         if "rob:tsownlevel:tsown:final" in NUM:
             assert g("rob:tsownlevel:tsown:final") < 50, "text: a matched level does not rescue the tight prior"
-    tab = [r"\begin{tabular}{llrrrrrr}", r"\toprule",
-           r"Variant & Method & Runs & Final (\%) & Average (\%) & Quotes over budget (\%) & Harmful adoptions & Pilots over budget \\",
-           r"\midrule"] + rows + [r"\bottomrule", r"\end{tabular}"]
+    tab = [r"\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\linewidth}lrrrrrr@{}}", r"\toprule",
+           r" & & & Final & Average & Quotes over & Harmful & Pilots over \\",
+           r"Variant & Method & Runs & (\%) & (\%) & budget (\%) & adoptions & budget \\",
+           r"\midrule"] + label_once(rows) + [r"\bottomrule", r"\end{tabular}"]
     open(os.path.join(out, "tab_robust.tex"), "w").write("\n".join(tab) + "\n")
     open(os.path.join(out, "robust.tex"), "w").write(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "robust_text.tex")).read()
                                                    if found else "Robustness runs are pending.\n")
@@ -661,7 +712,8 @@ def design_section(out, main_runs):
     def row(label, m, rs):
         f, fe = strat(rs, "final_of_opt")
         a, ae = strat(rs, "avg_of_opt")
-        return (f"{label} & {MNAME[m]} & {fmt_int(len(rs))} & {pct(f)} $\\pm$ {pct(1.96 * fe, 2)} & {pct(a)} $\\pm$ {pct(1.96 * ae, 2)} & "
+        assert len(rs) == 3240, "the caption says 3,240 runs per row"
+        return (f"{label} & {MNAME[m]} & {pct(f)} $\\pm$ {pct(1.96 * fe, 2)} & {pct(a)} $\\pm$ {pct(1.96 * ae, 2)} & "
                 f"{sum(r['harmful_moves'] for r in rs)} & {sum(r['pilot_over_budget'] for r in rs)} & "
                 f"{sum(r['ci_miss'] for r in rs)} \\\\")
     rows, finals, tot = [], {"cert-M": [], "cert-eta": []}, dict(runs=0, over=0, harm=0, miss=0)
@@ -693,8 +745,8 @@ def design_section(out, main_runs):
         put("rob:design:cimiss", fmt_int(tot["miss"]))
         for m in finals:
             k = m.replace("-", "")
-            put(f"rob:design:{k}:lo", pct(min(finals[m]), 0) + r"\%")
-            put(f"rob:design:{k}:hi", pct(max(finals[m]), 0) + r"\%")
+            put(f"rob:design:{k}:lo", pct(min(finals[m]), 1) + r"\%")
+            put(f"rob:design:{k}:hi", pct(max(finals[m]), 1) + r"\%")
         hit, allseeds = set(), set()
         for key, _ in DESIGN:
             path = os.path.join(RES, f"design_{key}.json")
@@ -707,9 +759,10 @@ def design_section(out, main_runs):
         lo, hi = cp_interval(len(hit), len(allseeds))
         put("rob:design:seeds", fmt_int(len(allseeds)))
         put("rob:design:pilotover:cp:hi", pct(hi, 3) + r"\%")
-    tab = [r"\begin{tabular}{llrrrrrr}", r"\toprule",
-           r"Variant & Method & Runs & Final (\%) & Average (\%) & Harmful adoptions & Pilots over budget & Runs with a missed interval \\",
-           r"\midrule"] + rows + [r"\bottomrule", r"\end{tabular}"]
+    tab = [r"\begin{tabular}{@{}llrrrrr@{}}", r"\toprule",
+           r" & & Final & Average & Harmful & Pilots over & Runs with a \\",
+           r"Variant & Method & (\%) & (\%) & adoptions & budget & missed interval \\",
+           r"\midrule"] + label_once(rows) + [r"\bottomrule", r"\end{tabular}"]
     open(os.path.join(out, "tab_design.tex"), "w").write("\n".join(tab) + "\n")
 
 
@@ -977,6 +1030,8 @@ def main():
     write_numbers(out)
     missing = check_keys(a.paper)
     print(f"{len(NUM)} numbers written; {len(runs)} runs from {os.path.basename(path)}")
+    if FELL_BACK:
+        print(f"text numbers kept at one decimal to agree with the tables: {sorted(set(FELL_BACK))}")
     return 1 if missing else 0
 
 
