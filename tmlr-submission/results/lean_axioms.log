@@ -1,0 +1,6 @@
+Build completed successfully (18200 jobs).
+non-standard lines:
+not reported:
+theorems checked: 123
+declared: 123
+by file: Adoption.lean 10, Anytime.lean 14, BernoulliKL.lean 16, Certificate.lean 6, Confidence.lean 11, Credit.lean 39, Defs.lean 0, Indistinguishable.lean 1, Secant.lean 19, TakeUp.lean 7

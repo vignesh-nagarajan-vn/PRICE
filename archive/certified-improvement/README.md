@@ -3,7 +3,7 @@
 | | |
 | --- | --- |
 | **Venue** | [TMLR](https://jmlr.org/tmlr/) |
-| **Status** | Being prepared for submission |
+| **Status** | Superseded before submission by the lending paper in [`../../tmlr-submission/`](../../tmlr-submission/), which went to TMLR on November 19, 2026. Kept as a record and not maintained |
 | **Paper** | [`certified-safe-improvement.pdf`](certified-safe-improvement.pdf), the final manuscript in the TMLR template |
 | **Base paper** | REFLEX, [arXiv:2608.16155](https://arxiv.org/abs/2608.16155) |
 
@@ -35,15 +35,15 @@ The lemmas behind these results are machine-checked in Lean 4 (107 theorems). Ap
 Run the theorem checks from `supplementary/code/`. They need numpy, sympy and mpmath, and all 50 pass.
 
 ```bash
-cd certified-improvement/supplementary/code && python verification/verify_math.py
+cd archive/certified-improvement/supplementary/code && python verification/verify_math.py
 ```
 
 Build the Lean proofs from `supplementary/lean/`. This needs the Lean toolchain in `lean-toolchain` and downloads a compiled Mathlib.
 
 ```bash
-cd certified-improvement/supplementary/lean && lake exe cache get && lake build PriceCert
+cd archive/certified-improvement/supplementary/lean && lake exe cache get && lake build PriceCert
 ```
 
 ## Earlier versions
 
-This paper grew out of the certified-exploration work: an IEEE draft (*A Certified Exploration Framework for Pricing Models That Shape Their Own Data*) with its derivations and experiment pipeline, an earlier first draft and a shorter reframing. All three are in [`../archive/`](../archive/).
+This paper grew out of the certified-exploration work: an IEEE draft (*A Certified Exploration Framework for Pricing Models That Shape Their Own Data*) with its derivations and experiment pipeline, an earlier first draft and a shorter reframing. All three are elsewhere in this [`archive/`](../).
