@@ -1,5 +1,7 @@
 ABCSS 2026 guidelines and compliance check
-Checked Nov 19, 2026
+Checked Nov 19, 2026. Updated Nov 20, 2026 against the acceptance email.
+
+Paper ID S07214. Accepted Nov 2, 2026.
 
 Workshop: The 11th International Workshop on Application of Big Data for
 Computational Social Science (ABCSS2026), at IEEE BigData 2026.
@@ -18,10 +20,18 @@ Sources
 
 1. Dates
 
-- Nov 26, 2026: camera-ready submission (workshop page)
+- Nov 26, 2026: camera-ready submission (workshop page, confirmed by the
+  acceptance email)
 - Nov 26, 2026: author registration deadline (workshop page and conference page)
-- Dec 1, 2026: presentation videos due (conference page)
+- Dec 1, 2026: presentation videos due (conference page), 20 minutes maximum
 - Dec 14, 2026: workshops
+
+The acceptance email adds three things the public pages do not state. Camera-ready
+uploads go to https://wi-lab.com/cyberchair/2026/bigdata26/index.php. Two extra
+pages can be purchased at US$100 each, which this paper does not need at 8 pages.
+The presentation slot is 25 minutes, 20 to talk and 5 for questions. A student
+author registering alone pays the full rate, and a wire transfer takes about 10
+days to clear.
 
 
 2. What the workshop asks for
@@ -92,22 +102,50 @@ IEEE's general advice for Xplore is 150 to 250 words.
 
 4. Things the public pages do not cover
 
-These usually arrive by email from the chairs with the camera-ready
-instructions. They are not done.
+The acceptance email does not carry the ISBN or the conference ID, so two items
+are still open and the paper cannot be finalized without the first one.
 
-- The IEEE copyright form.
-- IEEE PDF eXpress check (needs the conference ID from the chairs).
-- The exact copyright line for the bottom of page 1. The paper still has the
-  placeholder 979-8-XXXX-XXXX-X/26/$31.00 (c)2026 IEEE from the submission.
-- Where to upload the final PDF.
-- Registration: at least one author must register by Nov 26.
+The exact copyright line for the bottom of page 1 is the blocker. The paper still
+has the placeholder 979-8-XXXX-XXXX-X/26/$31.00 (c)2026 IEEE from the submission,
+at line 45 of source/main.tex, and it prints on page 1 of the PDF. The ISBN depends
+on the proceedings, so it cannot be guessed. Ask the chairs for the exact string.
+
+The IEEE PDF eXpress check needs the conference ID from the chairs. Run it after
+the copyright line is in, and upload the file PDF eXpress returns. The IEEE
+copyright form also has to be signed, through whatever link the chairs send.
+
+Settled by the acceptance email: where to upload, and that at least one full
+registration is due Nov 26.
 
 
 5. Before submitting
 
-- The paper says the pilot code and the correctness matrix are in the PRICE
-  repository (Section VII-D). Push the pilot folder there first, or delete
-  that sentence.
 - Both authors should read the abstract, Section VII-D and the new paragraph
   in the Conclusion. They report two pilot results that cut against the
   provenance story.
+- Reviewer 2 asked for two things that are not closed. See the review reports
+  beside this file. Page 8 is full, so adding either needs a matching cut.
+  1. The firms' objective, with the definitions of epsilon, beta and gamma and
+     the references they rest on.
+  2. The equilibrium concept and information structure behind Theorem 4.
+
+
+6. Changes made on Nov 20, 2026
+
+Both are reductions, so neither can push the paper onto a ninth page. The PDF was
+rebuilt from source afterwards and still comes to 8 pages, with 32 embedded fonts,
+no Type 3 fonts, no overfull boxes and no undefined references.
+
+Removed the claim that the pilot code is published. Section VII-D said "The code
+and the correctness matrix are in [6]", pointing at the PRICE repository. The pilot
+code and the MMLU correctness matrix are not there. A search of all 772 paths in
+that repository returns nothing for pilot, MMLU, HELM or correctness. The sentence
+is gone. The Table II numbers stay, and they now have no published code behind
+them, which is the gap reviewer 3 pressed on. If the pilot folder is pushed before
+Nov 26, restore the sentence.
+
+Refreshed the access date on reference [6], from Sep. 19, 2026 to Nov. 20, 2026.
+
+The separate claim that 542 numerical certificates pass, in Section I and
+Section VII-A, does check out. ml-contributions/CERTIFICATES.md documents 542
+assertions across eight verifier files, and the files are present.

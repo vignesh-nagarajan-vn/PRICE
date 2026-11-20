@@ -3,8 +3,9 @@
 | | |
 | --- | --- |
 | **Venue** | [ABCSS 2026](https://css-japan.com/abcss2026/), a workshop at IEEE BigData 2026 (Dec 14 to 17, Phoenix) |
-| **Status** | Accepted |
-| **Paper** | [`ieee-abcss/submission/abcss2026-herd-immunity.pdf`](ieee-abcss/submission/abcss2026-herd-immunity.pdf), 7 pages, IEEE two-column |
+| **Status** | Accepted Nov 2, 2026, paper ID S07214. Camera-ready and author registration due Nov 26, presentation video due Dec 1 |
+| **Submitted paper** | [`ieee-abcss/submission/abcss2026-herd-immunity.pdf`](ieee-abcss/submission/abcss2026-herd-immunity.pdf), 7 pages, IEEE two-column |
+| **Camera-ready** | [`Herd Immunity - ABCSS 2026 revised paper.pdf`](<ieee-abcss/Herd Immunity Paper - ABCSS 2026 camera-ready/Herd Immunity - ABCSS 2026 revised paper.pdf>), 8 pages. Page 1 still carries a placeholder ISBN, so it is not uploadable yet |
 | **Base paper** | REFLEX, [arXiv:2608.16155](https://arxiv.org/abs/2608.16155) |
 
 ## Thesis
@@ -27,6 +28,7 @@ All four rest on one substitution, `m_N = N_eff * m_1`.
 | Path | Holds |
 | --- | --- |
 | [`ieee-abcss/`](ieee-abcss/) | The paper: LaTeX source in `paper/`, the upload package in `submission/` and the build script |
+| [`ieee-abcss/Herd Immunity Paper - ABCSS 2026 camera-ready/`](<ieee-abcss/Herd Immunity Paper - ABCSS 2026 camera-ready/>) | The camera-ready: source, the built PDF, the Overleaf zip, the compliance check and the three review reports |
 | [`math/`](math/) | Notation, standing assumptions, one note per theorem and the complete proofs under `derivations/` |
 | [`ml-contributions/`](ml-contributions/) | The theory module, the response environment, the experiment harness and the certificates |
 | [`literature/`](literature/) | The literature review |
