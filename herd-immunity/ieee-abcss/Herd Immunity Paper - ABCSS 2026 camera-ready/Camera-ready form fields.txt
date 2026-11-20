@@ -1,0 +1,28 @@
+ABCSS 2026 camera-ready form fields, paper S07214
+Generated from the camera-ready source on Nov 20, 2026.
+Upload at https://wi-lab.com/cyberchair/2026/bigdata26/index.php
+
+TITLE
+Herd Immunity and Learning Externalities in Markets of Shared Foundation Models
+
+AUTHORS, in the accepted order
+Vignesh Nagarajan, Texas A&M University, College Station, TX, USA,
+  vigneshn26@tamu.edu
+Shriraghav Ashok, University of California, Berkeley, Berkeley, CA, USA,
+  sashok24@berkeley.edu
+
+ABSTRACT (275 words, LaTeX stripped)
+Every firm that prices, lends or ranks with machine learning wants its model current, so it retrains on the newest data. However, that data was produced in part by its own model and by every competitor's. When many firms fine-tune the same foundation model, one firm's retraining changes what every other firm learns from next, and no firm accounts for it. This paper models that market and shows it is stable exactly when one number, the feedback reproduction number, stays below one. That number depends on how many independent models sit under the market, not on how many firms there are. When firms draw on a common pool, fifty firms built on one vendor's model behave like one learner with fifty times the footprint. On this foundation we derive three remedies. Retraining in smaller steps helps only below a critical crowding level. Correcting for feedback works like vaccination, and the share of firms that must correct follows the epidemiological coverage formula for an imperfect vaccine, including an efficacy below which no coverage is enough. A tax on aggressive adaptation closes the gap between private and social incentives, and without it every market of two or more firms over-adapts. We confirm the base law in one measured check, which reruns an order-flow market simulator and reproduces its published amplification to every reported digit. Every other check of the theory confirms a formula against the model it came from, and is labeled that way. A pilot on 79 deployed language models puts the shared fraction near 0.43 on an error-correlation proxy. Ultimately, the framework gives a supervisor one market-level quantity and three instruments that act on it.
+
+INDEX TERMS
+algorithmic monoculture, foundation models, herd immunity, learning externalities, performative prediction, Pigouvian taxation, systemic risk
+
+FILES
+Paper PDF   Herd Immunity - ABCSS 2026 revised paper.pdf
+LaTeX source   Overleaf source (upload this zip).zip
+
+NOT READY
+Page 1 carries the placeholder copyright line
+979-8-XXXX-XXXX-X/26/$31.00 (c)2026 IEEE at line 45 of source/main.tex.
+Replace it with the string the chairs supply, rebuild, then run IEEE PDF
+eXpress with the conference ID and upload the file it returns.
