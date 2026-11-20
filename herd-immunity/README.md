@@ -5,7 +5,7 @@
 | **Venue** | [ABCSS 2026](https://css-japan.com/abcss2026/), a workshop at IEEE BigData 2026 (Dec 14 to 17, Phoenix) |
 | **Status** | Accepted Nov 2, 2026, paper ID S07214. Camera-ready and author registration due Nov 26, presentation video due Dec 1 |
 | **Submitted paper** | [`ieee-abcss/submission/abcss2026-herd-immunity.pdf`](ieee-abcss/submission/abcss2026-herd-immunity.pdf), 7 pages, IEEE two-column |
-| **Camera-ready** | [`Herd Immunity - ABCSS 2026 revised paper.pdf`](<ieee-abcss/Herd Immunity Paper - ABCSS 2026 camera-ready/Herd Immunity - ABCSS 2026 revised paper.pdf>), 8 pages. Page 1 still carries a placeholder ISBN, so it is not uploadable yet |
+| **Camera-ready** | [`Herd Immunity - ABCSS 2026 revised paper.pdf`](<ieee-abcss/Herd Immunity Paper - ABCSS 2026 camera-ready/Herd Immunity - ABCSS 2026 revised paper.pdf>), 8 pages, PDF 1.4. Run it through IEEE PDF eXpress (conference ID 70701X) and upload the file that comes back |
 | **Base paper** | REFLEX, [arXiv:2608.16155](https://arxiv.org/abs/2608.16155) |
 
 ## Thesis

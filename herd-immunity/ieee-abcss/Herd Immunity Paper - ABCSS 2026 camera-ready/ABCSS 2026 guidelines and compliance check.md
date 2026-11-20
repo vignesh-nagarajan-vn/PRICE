@@ -100,22 +100,41 @@ Note on the abstract. It is now about 275 words. The workshop sets no limit.
 IEEE's general advice for Xplore is 150 to 250 words.
 
 
-4. Things the public pages do not cover
+4. The camera-ready instructions
 
-The acceptance email does not carry the ISBN or the conference ID, so two items
-are still open and the paper cannot be finalized without the first one.
+Source: the BigData 2026 workshops camera-ready instruction page,
+https://wi-lab.com/cyberchair/2026/bigdata26/scripts/BigData_2026_Camera_ready_instruction.php?subarea=S
+Read Nov 20, 2026. Eight steps. Everything in this section comes from it.
 
-The exact copyright line for the bottom of page 1 is the blocker. The paper still
-has the placeholder 979-8-XXXX-XXXX-X/26/$31.00 (c)2026 IEEE from the submission,
-at line 45 of source/main.tex, and it prints on page 1 of the PDF. The ISBN depends
-on the proceedings, so it cannot be guessed. Ask the chairs for the exact string.
+**IEEE PDF eXpress conference ID: 70701X.** PDF eXpress opened Oct 5, 2026, at
+https://ieee-pdf-express.org/ . New users register with that ID, an email address
+and a password. Upload either the PDF for checking or the source for conversion.
+PDF eXpress does not capture files, it returns one, and the file it returns is what
+gets uploaded at step 6.
 
-The IEEE PDF eXpress check needs the conference ID from the chairs. Run it after
-the copyright line is in, and upload the file PDF eXpress returns. The IEEE
-copyright form also has to be signed, through whatever link the chairs send.
+Distiller settings the instructions require, and where this paper stands.
 
-Settled by the acceptance email: where to upload, and that at least one full
-registration is due Nov 26.
+| Setting | Required | This PDF |
+| --- | --- | --- |
+| Acrobat compatibility | 5.0, which is PDF 1.4 | 1.4, set by `\pdfminorversion=4` |
+| Page size | 612.0 x 792.0 pt | 612 x 792 pt |
+| Fonts | all embedded and subset | 32, all embedded and all subset |
+| Graphics | at least 300 dpi | one raster image, the colorbar in Fig. 2, at 405 dpi. Everything else is vector |
+| Optimized | yes | no, and no local tool to linearize. PDF eXpress conversion settles this, and its PDF Check reports it |
+
+**No page 1 copyright line is asked for.** The instruction page says nothing about
+a copyright notice, an ISBN or a price, and supplies no string. Searching it for
+"copyright notice", "ISBN", "979-" and "31.00" returns nothing, and the four plain
+mentions of copyright are all the electronic copyright form at step 3. The
+placeholder is therefore commented out in `source/main.tex` rather than printed.
+If the chairs do send a string, uncomment `\IEEEpubid` and `\IEEEpubidadjcol` and
+put it in.
+
+The remaining steps are account work, not paper work. Step 3 is the electronic
+copyright form, step 6 the final PDF upload, step 7 the registration receipt, which
+arrives as a PDF from registration@computer.org, and step 8 a choice of in-person
+presentation or not. Steps 3, 6, 7 and 8 all post to the same CyberChair page,
+https://wi-lab.com/cyberchair/2026/bigdata26/scripts/final.php?subarea=S
 
 
 5. Before submitting

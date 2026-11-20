@@ -21,8 +21,15 @@ FILES
 Paper PDF   Herd Immunity - ABCSS 2026 revised paper.pdf
 LaTeX source   Overleaf source (upload this zip).zip
 
-NOT READY
-Page 1 carries the placeholder copyright line
-979-8-XXXX-XXXX-X/26/$31.00 (c)2026 IEEE at line 45 of source/main.tex.
-Replace it with the string the chairs supply, rebuild, then run IEEE PDF
-eXpress with the conference ID and upload the file it returns.
+BEFORE UPLOADING
+Run the PDF through IEEE PDF eXpress, conference ID 70701X, at
+https://ieee-pdf-express.org/ and upload the file it returns, not this one.
+The page 1 copyright line is commented out in source/main.tex, because the
+camera-ready instructions do not ask for one and supply no ISBN.
+
+STEPS THAT NEED YOUR ACCOUNT
+Electronic copyright form, final PDF upload, registration receipt, and the
+in-person presentation choice all post to
+https://wi-lab.com/cyberchair/2026/bigdata26/scripts/final.php?subarea=S
+Registration and camera-ready are both due Nov 26, 2026. The presentation
+video is due Dec 1, 2026, 20 minutes maximum.

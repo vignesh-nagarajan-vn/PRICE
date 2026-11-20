@@ -1,4 +1,6 @@
 \documentclass[conference]{IEEEtran}
+% IEEE camera-ready asks for Acrobat 5.0 compatibility, which is PDF 1.4.
+\pdfminorversion=4
 \IEEEoverridecommandlockouts
 
 \usepackage{cite}
@@ -42,7 +44,10 @@ Berkeley, CA, USA\\
 sashok24@berkeley.edu}
 \thanks{\textsuperscript{\dag}These authors contributed equally to this work.}}
 
-\IEEEpubid{979-8-XXXX-XXXX-X/26/\$31.00~\copyright2026 IEEE}
+% The BigData 2026 camera-ready instructions ask for no page 1 copyright line
+% and give no ISBN. If the chairs send the exact string, put it here and
+% uncomment both this line and the \IEEEpubidadjcol below.
+% \IEEEpubid{979-8-XXXX-XXXX-X/26/\$31.00~\copyright2026 IEEE}
 
 \maketitle
 
@@ -93,7 +98,7 @@ foundation model make correlated errors \cite{kim2025}. Models are validated
 one at a time, and a common assumption behind that practice is that a market
 of individually stable models is itself stable.
 
-\IEEEpubidadjcol
+% \IEEEpubidadjcol
 \subsection{Current approaches}
 Looking at the existing literature, the idea that sensible individual behavior
 can add up to collective fragility is well established. Banks that each
